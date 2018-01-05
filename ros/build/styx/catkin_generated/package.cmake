@@ -10,4 +10,7 @@ set(styx_EXEC_DEPENDS "dbw_mkz_msgs" "geometry_msgs" "roscpp" "rospy" "sensor_ms
 set(styx_RUN_DEPENDS "dbw_mkz_msgs" "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std_msgs" "cv_bridge")
 set(styx_TEST_DEPENDS )
 set(styx_DOC_DEPENDS )
+set(styx_URL_WEBSITE "")
+set(styx_URL_BUGTRACKER "")
+set(styx_URL_REPOSITORY "")
 set(styx_DEPRECATED "")

@@ -1,8 +1,8 @@
-prefix=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install
+prefix=/capstone/ros/install
 
 Name: waypoint_follower
 Description: Description of waypoint_follower
 Version: 0.0.0
-Cflags: -I/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install/include
-Libs: -L/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install/lib -llibwaypoint_follower
+Cflags: -I/capstone/ros/install/include
+Libs: -L/capstone/ros/install/lib -llibwaypoint_follower
 Requires: roscpp std_msgs tf geometry_msgs styx_msgs

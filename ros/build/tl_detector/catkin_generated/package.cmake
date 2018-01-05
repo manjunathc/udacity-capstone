@@ -10,4 +10,7 @@ set(tl_detector_EXEC_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std
 set(tl_detector_RUN_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std_msgs" "styx_msgs" "waypoint_updater")
 set(tl_detector_TEST_DEPENDS )
 set(tl_detector_DOC_DEPENDS )
+set(tl_detector_URL_WEBSITE "")
+set(tl_detector_URL_BUGTRACKER "")
+set(tl_detector_URL_REPOSITORY "")
 set(tl_detector_DEPRECATED "")

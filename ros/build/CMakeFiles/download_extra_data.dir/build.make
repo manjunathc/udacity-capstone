@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 # Utility rule file for download_extra_data.
 
@@ -67,6 +67,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /capstone/ros/src /capstone/ros/src /capstone/ros/build /capstone/ros/build /capstone/ros/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

@@ -10,4 +10,7 @@ set(waypoint_loader_EXEC_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" 
 set(waypoint_loader_RUN_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std_msgs" "styx_msgs")
 set(waypoint_loader_TEST_DEPENDS )
 set(waypoint_loader_DOC_DEPENDS )
+set(waypoint_loader_URL_WEBSITE "")
+set(waypoint_loader_URL_BUGTRACKER "")
+set(waypoint_loader_URL_REPOSITORY "")
 set(waypoint_loader_DEPRECATED "")

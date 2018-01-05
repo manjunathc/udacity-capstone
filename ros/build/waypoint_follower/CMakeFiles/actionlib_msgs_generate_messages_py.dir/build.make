@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 # Utility rule file for actionlib_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build: acti
 .PHONY : waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
 
 waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/waypoint_follower && $(CMAKE_COMMAND) -P CMakeFiles/actionlib_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /capstone/ros/build/waypoint_follower && $(CMAKE_COMMAND) -P CMakeFiles/actionlib_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
 
 waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/waypoint_follower /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/waypoint_follower /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /capstone/ros/src /capstone/ros/src/waypoint_follower /capstone/ros/build /capstone/ros/build/waypoint_follower /capstone/ros/build/waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : waypoint_follower/CMakeFiles/actionlib_msgs_generate_messages_py.dir/depend
 

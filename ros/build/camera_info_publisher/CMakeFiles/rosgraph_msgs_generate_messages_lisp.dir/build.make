@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 # Utility rule file for rosgraph_msgs_generate_messages_lisp.
 
@@ -63,10 +63,10 @@ camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build:
 .PHONY : camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 
 camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/camera_info_publisher && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /capstone/ros/build/camera_info_publisher && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/camera_info_publisher /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/camera_info_publisher /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /capstone/ros/src /capstone/ros/src/camera_info_publisher /capstone/ros/build /capstone/ros/build/camera_info_publisher /capstone/ros/build/camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : camera_info_publisher/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
 

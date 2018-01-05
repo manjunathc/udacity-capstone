@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,14 +135,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_progress_start /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/waypoint_updater/CMakeFiles/progress.marks
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles 0
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_progress_start /capstone/ros/build/CMakeFiles /capstone/ros/build/waypoint_updater/CMakeFiles/progress.marks
+	cd /capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /capstone/ros/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/clean
+	cd /capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,17 +152,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/preinstall
+	cd /capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/preinstall
+	cd /capstone/ros/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_updater/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -189,6 +189,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

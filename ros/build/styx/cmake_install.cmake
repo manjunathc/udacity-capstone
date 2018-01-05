@@ -1,8 +1,8 @@
-# Install script for directory: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx
+# Install script for directory: /capstone/ros/src/styx
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install")
+  set(CMAKE_INSTALL_PREFIX "/capstone/ros/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx/catkin_generated/installspace/styx.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/capstone/ros/build/styx/catkin_generated/installspace/styx.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/styx/cmake" TYPE FILE FILES
-    "/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx/catkin_generated/installspace/styxConfig.cmake"
-    "/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx/catkin_generated/installspace/styxConfig-version.cmake"
+    "/capstone/ros/build/styx/catkin_generated/installspace/styxConfig.cmake"
+    "/capstone/ros/build/styx/catkin_generated/installspace/styxConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/styx" TYPE FILE FILES "/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/styx" TYPE FILE FILES "/capstone/ros/src/styx/package.xml")
 endif()
 

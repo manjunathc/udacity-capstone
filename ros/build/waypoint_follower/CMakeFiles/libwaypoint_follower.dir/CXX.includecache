@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/include/styx_msgs/Lane.h
+/capstone/ros/devel/include/styx_msgs/Lane.h
 string
 -
 vector
@@ -26,7 +26,7 @@ std_msgs/Header.h
 styx_msgs/Waypoint.h
 -
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/include/styx_msgs/Waypoint.h
+/capstone/ros/devel/include/styx_msgs/Waypoint.h
 string
 -
 vector
@@ -46,7 +46,7 @@ geometry_msgs/PoseStamped.h
 geometry_msgs/TwistStamped.h
 -
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/waypoint_follower/include/libwaypoint_follower.h
+/capstone/ros/src/waypoint_follower/include/libwaypoint_follower.h
 iostream
 -
 sstream
@@ -58,11 +58,11 @@ tf/transform_broadcaster.h
 tf/transform_listener.h
 -
 styx_msgs/Lane.h
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/waypoint_follower/include/styx_msgs/Lane.h
+/capstone/ros/src/waypoint_follower/include/styx_msgs/Lane.h
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/waypoint_follower/lib/libwaypoint_follower.cpp
+/capstone/ros/src/waypoint_follower/lib/libwaypoint_follower.cpp
 libwaypoint_follower.h
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/waypoint_follower/lib/libwaypoint_follower.h
+/capstone/ros/src/waypoint_follower/lib/libwaypoint_follower.h
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h
 string
@@ -587,6 +587,8 @@ ros/rate.h
 /opt/ros/kinetic/include/ros/ros/rate.h
 ros/wall_timer.h
 /opt/ros/kinetic/include/ros/ros/wall_timer.h
+ros/steady_timer.h
+/opt/ros/kinetic/include/ros/ros/steady_timer.h
 ros/advertise_options.h
 /opt/ros/kinetic/include/ros/ros/advertise_options.h
 ros/advertise_service_options.h
@@ -839,6 +841,20 @@ boost/shared_ptr.hpp
 /opt/ros/kinetic/include/ros/static_assert.h
 boost/static_assert.hpp
 -
+
+/opt/ros/kinetic/include/ros/steady_timer.h
+common.h
+/opt/ros/kinetic/include/ros/common.h
+forwards.h
+/opt/ros/kinetic/include/ros/forwards.h
+steady_timer_options.h
+/opt/ros/kinetic/include/ros/steady_timer_options.h
+
+/opt/ros/kinetic/include/ros/steady_timer_options.h
+common.h
+/opt/ros/kinetic/include/ros/common.h
+ros/forwards.h
+/opt/ros/kinetic/include/ros/ros/forwards.h
 
 /opt/ros/kinetic/include/ros/subscribe_options.h
 ros/forwards.h

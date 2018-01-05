@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 # Utility rule file for _styx_msgs_generate_messages_check_deps_TrafficLight.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/b
 include styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/progress.make
 
 styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg geometry_msgs/Quaternion:geometry_msgs/PoseStamped:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Point
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py styx_msgs /capstone/ros/src/styx_msgs/msg/TrafficLight.msg geometry_msgs/Quaternion:geometry_msgs/PoseStamped:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Point
 
 _styx_msgs_generate_messages_check_deps_TrafficLight: styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight
 _styx_msgs_generate_messages_check_deps_TrafficLight: styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/build.make
@@ -67,10 +67,10 @@ styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/bu
 .PHONY : styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/build
 
 styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/clean:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && $(CMAKE_COMMAND) -P CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/cmake_clean.cmake
+	cd /capstone/ros/build/styx_msgs && $(CMAKE_COMMAND) -P CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/cmake_clean.cmake
 .PHONY : styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/clean
 
 styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/DependInfo.cmake --color=$(COLOR)
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /capstone/ros/src /capstone/ros/src/styx_msgs /capstone/ros/build /capstone/ros/build/styx_msgs /capstone/ros/build/styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : styx_msgs/CMakeFiles/_styx_msgs_generate_messages_check_deps_TrafficLight.dir/depend
 

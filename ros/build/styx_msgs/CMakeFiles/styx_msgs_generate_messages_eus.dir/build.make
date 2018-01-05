@@ -43,81 +43,81 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 # Utility rule file for styx_msgs_generate_messages_eus.
 
 # Include the progress variables for this target.
 include styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/progress.make
 
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l
 
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from styx_msgs/Waypoint.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /capstone/ros/src/styx_msgs/msg/Waypoint.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from styx_msgs/Waypoint.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /capstone/ros/src/styx_msgs/msg/Waypoint.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/roseus/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from styx_msgs/TrafficLight.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /capstone/ros/src/styx_msgs/msg/Lane.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /capstone/ros/src/styx_msgs/msg/Waypoint.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from styx_msgs/Lane.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /capstone/ros/src/styx_msgs/msg/Lane.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/roseus/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Lane.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from styx_msgs/Lane.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Lane.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /capstone/ros/src/styx_msgs/msg/TrafficLight.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from styx_msgs/TrafficLight.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /capstone/ros/src/styx_msgs/msg/TrafficLight.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/roseus/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from styx_msgs/TrafficLightArray.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /capstone/ros/src/styx_msgs/msg/TrafficLight.msg
+/capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from styx_msgs/TrafficLightArray.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/roseus/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp manifest code for styx_msgs"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs styx_msgs geometry_msgs sensor_msgs std_msgs
+/capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp manifest code for styx_msgs"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /capstone/ros/devel/share/roseus/ros/styx_msgs styx_msgs geometry_msgs sensor_msgs std_msgs
 
 styx_msgs_generate_messages_eus: styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus
-styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l
-styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l
-styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l
-styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l
-styx_msgs_generate_messages_eus: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l
+styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l
+styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l
+styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l
+styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l
+styx_msgs_generate_messages_eus: /capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l
 styx_msgs_generate_messages_eus: styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/build.make
 
 .PHONY : styx_msgs_generate_messages_eus
@@ -128,10 +128,10 @@ styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/build: styx_msgs_genera
 .PHONY : styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/build
 
 styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/clean:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && $(CMAKE_COMMAND) -P CMakeFiles/styx_msgs_generate_messages_eus.dir/cmake_clean.cmake
+	cd /capstone/ros/build/styx_msgs && $(CMAKE_COMMAND) -P CMakeFiles/styx_msgs_generate_messages_eus.dir/cmake_clean.cmake
 .PHONY : styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/clean
 
 styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /capstone/ros/src /capstone/ros/src/styx_msgs /capstone/ros/build /capstone/ros/build/styx_msgs /capstone/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : styx_msgs/CMakeFiles/styx_msgs_generate_messages_eus.dir/depend
 

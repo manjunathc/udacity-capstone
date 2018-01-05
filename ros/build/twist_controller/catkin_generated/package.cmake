@@ -10,4 +10,7 @@ set(twist_controller_EXEC_DEPENDS "dbw_mkz_msgs" "geometry_msgs" "roscpp" "rospy
 set(twist_controller_RUN_DEPENDS "dbw_mkz_msgs" "geometry_msgs" "roscpp" "rospy" "std_msgs")
 set(twist_controller_TEST_DEPENDS )
 set(twist_controller_DOC_DEPENDS )
+set(twist_controller_URL_WEBSITE "")
+set(twist_controller_URL_BUGTRACKER "")
+set(twist_controller_URL_REPOSITORY "")
 set(twist_controller_DEPRECATED "")

@@ -1,8 +1,8 @@
-prefix=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install
+prefix=/capstone/ros/install
 
 Name: waypoint_updater
 Description: Description of waypoint_updater
 Version: 0.0.0
 Cflags: 
-Libs: -L/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install/lib 
+Libs: -L/capstone/ros/install/lib 
 Requires: 

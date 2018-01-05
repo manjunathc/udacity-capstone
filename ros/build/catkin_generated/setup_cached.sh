@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel:$CMAKE_PREFIX_PATH"
-export PWD="/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/capstone/ros/devel:$CMAKE_PREFIX_PATH"
+export PWD="/capstone/ros/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/capstone/ros/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/capstone/ros/src:$ROS_PACKAGE_PATH"

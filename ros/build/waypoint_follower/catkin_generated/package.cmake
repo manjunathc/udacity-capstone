@@ -10,4 +10,7 @@ set(waypoint_follower_EXEC_DEPENDS "geometry_msgs" "roscpp" "rospy" "std_msgs" "
 set(waypoint_follower_RUN_DEPENDS "geometry_msgs" "roscpp" "rospy" "std_msgs" "styx_msgs" "tf")
 set(waypoint_follower_TEST_DEPENDS )
 set(waypoint_follower_DOC_DEPENDS )
+set(waypoint_follower_URL_WEBSITE "")
+set(waypoint_follower_URL_BUGTRACKER "")
+set(waypoint_follower_URL_REPOSITORY "")
 set(waypoint_follower_DEPRECATED "")

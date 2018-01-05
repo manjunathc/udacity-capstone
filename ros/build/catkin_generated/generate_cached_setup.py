@@ -19,9 +19,9 @@ except ImportError:
             break
     from catkin.environment_cache import generate_environment_script
 
-code = generate_environment_script('/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/env.sh')
+code = generate_environment_script('/capstone/ros/devel/env.sh')
 
-output_filename = '/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/catkin_generated/setup_cached.sh'
+output_filename = '/capstone/ros/build/catkin_generated/setup_cached.sh'
 with open(output_filename, 'w') as f:
     #print('Generate script for cached setup "%s"' % output_filename)
     f.write('\n'.join(code))

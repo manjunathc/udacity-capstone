@@ -43,75 +43,75 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src
+CMAKE_SOURCE_DIR = /capstone/ros/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build
+CMAKE_BINARY_DIR = /capstone/ros/build
 
 # Utility rule file for styx_msgs_generate_messages_nodejs.
 
 # Include the progress variables for this target.
 include styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/progress.make
 
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js
-styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js
+styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js
 
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from styx_msgs/Waypoint.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /capstone/ros/src/styx_msgs/msg/Waypoint.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from styx_msgs/Waypoint.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /capstone/ros/src/styx_msgs/msg/Waypoint.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from styx_msgs/TrafficLight.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /capstone/ros/src/styx_msgs/msg/Lane.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /capstone/ros/src/styx_msgs/msg/Waypoint.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from styx_msgs/Lane.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /capstone/ros/src/styx_msgs/msg/Lane.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Lane.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/TwistStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from styx_msgs/Lane.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Lane.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /capstone/ros/src/styx_msgs/msg/TrafficLight.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from styx_msgs/TrafficLight.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /capstone/ros/src/styx_msgs/msg/TrafficLight.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
 
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg
-/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from styx_msgs/TrafficLightArray.msg"
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg -Istyx_msgs:/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/PoseStamped.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /capstone/ros/src/styx_msgs/msg/TrafficLight.msg
+/capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/capstone/ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from styx_msgs/TrafficLightArray.msg"
+	cd /capstone/ros/build/styx_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg -Istyx_msgs:/capstone/ros/src/styx_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p styx_msgs -o /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg
 
 styx_msgs_generate_messages_nodejs: styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs
-styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js
-styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js
-styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js
-styx_msgs_generate_messages_nodejs: /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js
+styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Waypoint.js
+styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/Lane.js
+styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLight.js
+styx_msgs_generate_messages_nodejs: /capstone/ros/devel/share/gennodejs/ros/styx_msgs/msg/TrafficLightArray.js
 styx_msgs_generate_messages_nodejs: styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/build.make
 
 .PHONY : styx_msgs_generate_messages_nodejs
@@ -122,10 +122,10 @@ styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/build: styx_msgs_gen
 .PHONY : styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/build
 
 styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/clean:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs && $(CMAKE_COMMAND) -P CMakeFiles/styx_msgs_generate_messages_nodejs.dir/cmake_clean.cmake
+	cd /capstone/ros/build/styx_msgs && $(CMAKE_COMMAND) -P CMakeFiles/styx_msgs_generate_messages_nodejs.dir/cmake_clean.cmake
 .PHONY : styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/clean
 
 styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/depend:
-	cd /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs /media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /capstone/ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /capstone/ros/src /capstone/ros/src/styx_msgs /capstone/ros/build /capstone/ros/build/styx_msgs /capstone/ros/build/styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : styx_msgs/CMakeFiles/styx_msgs_generate_messages_nodejs.dir/depend
 

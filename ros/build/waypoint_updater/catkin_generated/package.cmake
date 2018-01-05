@@ -10,4 +10,7 @@ set(waypoint_updater_EXEC_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs"
 set(waypoint_updater_RUN_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std_msgs" "styx_msgs")
 set(waypoint_updater_TEST_DEPENDS )
 set(waypoint_updater_DOC_DEPENDS )
+set(waypoint_updater_URL_WEBSITE "")
+set(waypoint_updater_URL_BUGTRACKER "")
+set(waypoint_updater_URL_REPOSITORY "")
 set(waypoint_updater_DEPRECATED "")

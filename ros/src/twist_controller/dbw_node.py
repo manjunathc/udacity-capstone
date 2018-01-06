@@ -34,7 +34,8 @@ that we have created in the `__init__` function.
 class DBWNode(object):
     def __init__(self):
         rospy.init_node('dbw_node')
-
+	self.dbw_enabled = False
+	self.sub1 = rospy.Subscriber('/vehicle/dbw_enabled', Bool, self.enable_dbw_callback)
         vehicle_mass = rospy.get_param('~vehicle_mass', 1736.35)
         fuel_capacity = rospy.get_param('~fuel_capacity', 13.5)
         brake_deadband = rospy.get_param('~brake_deadband', .1)
@@ -71,7 +72,8 @@ class DBWNode(object):
             #                                                     <dbw status>,
             #                                                     <any other argument you need>)
             # if <dbw is enabled>:
-            self.publish(1, 0, 1)
+            if self.dbw_enabled == True:
+            	self.publish(1, 0, 1)
             rate.sleep()
 
     def publish(self, throttle, brake, steer):
@@ -91,6 +93,11 @@ class DBWNode(object):
         bcmd.pedal_cmd_type = BrakeCmd.CMD_TORQUE
         bcmd.pedal_cmd = brake
         self.brake_pub.publish(bcmd)
+
+
+    def enable_dbw_callback(self, data):
+	print data
+	self.dbw_enabled = data.data
 
 
 if __name__ == '__main__':

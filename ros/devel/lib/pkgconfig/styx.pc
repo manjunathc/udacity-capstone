@@ -1,8 +1,0 @@
-prefix=/capstone/ros/devel
-
-Name: styx
-Description: Description of styx
-Version: 0.0.0
-Cflags: 
-Libs: -L/capstone/ros/devel/lib 
-Requires: 

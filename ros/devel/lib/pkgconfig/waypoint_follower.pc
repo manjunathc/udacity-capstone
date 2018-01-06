@@ -1,8 +1,0 @@
-prefix=/capstone/ros/devel
-
-Name: waypoint_follower
-Description: Description of waypoint_follower
-Version: 0.0.0
-Cflags: -I/capstone/ros/src/waypoint_follower/include
-Libs: -L/capstone/ros/devel/lib -llibwaypoint_follower
-Requires: roscpp std_msgs tf geometry_msgs styx_msgs

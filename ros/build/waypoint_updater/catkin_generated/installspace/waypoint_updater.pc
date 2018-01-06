@@ -1,8 +1,0 @@
-prefix=/capstone/ros/install
-
-Name: waypoint_updater
-Description: Description of waypoint_updater
-Version: 0.0.0
-Cflags: 
-Libs: -L/capstone/ros/install/lib 
-Requires: 

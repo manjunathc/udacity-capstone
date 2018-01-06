@@ -1,8 +1,0 @@
-prefix=/capstone/ros/devel
-
-Name: twist_controller
-Description: Description of twist_controller
-Version: 0.0.0
-Cflags: 
-Libs: -L/capstone/ros/devel/lib 
-Requires: 

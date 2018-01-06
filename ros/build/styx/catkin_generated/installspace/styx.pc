@@ -1,0 +1,8 @@
+prefix=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install
+
+Name: styx
+Description: Description of styx
+Version: 0.0.0
+Cflags: 
+Libs: -L/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install/lib 
+Requires: 

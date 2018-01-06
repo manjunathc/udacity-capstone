@@ -1,0 +1,8 @@
+prefix=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel
+
+Name: twist_controller
+Description: Description of twist_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/devel/lib 
+Requires: 

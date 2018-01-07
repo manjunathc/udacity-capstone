@@ -24,6 +24,7 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
 LOOKAHEAD_WPS = 100 # Number of waypoints we will publish. You can change this number
+REFERENCE_VELOCITY = 11.0  	# 11.0 m/s = ~25mph
 
 def get_closest_waypoint(x, y, yaw, waypoints):
 	
@@ -100,13 +101,14 @@ class WaypointUpdater(object):
 			for i in range(n_waypoints):
 				if (self.closest_waypoint + i < len(self.waypoints)):
 					ahead.append(self.waypoints[self.closest_waypoint+i])
+					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i, REFERENCE_VELOCITY)
 				else:
 					ahead.append(self.waypoints[self.closest_waypoint+i-len(self.waypoints)])
+					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i -len(self.waypoints), REFERENCE_VELOCITY)
 			lane = Lane()
 			lane.waypoints = ahead
 			# publish the final waypoints
 			self.final_waypoints_pub.publish(lane)
-
 		r.sleep()
 
     def pose_cb(self, msg):

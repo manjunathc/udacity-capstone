@@ -55,7 +55,7 @@ class DBWNode(object):
                                          BrakeCmd, queue_size=1)
 
         # TODO: Create `TwistController` object
-        self.controller = Controller()
+        self.controller = Controller(wheel_base, steer_ratio, 0, max_lat_accel, max_steer_angle)
 
         # TODO: Subscribe to all the topics you need to
 

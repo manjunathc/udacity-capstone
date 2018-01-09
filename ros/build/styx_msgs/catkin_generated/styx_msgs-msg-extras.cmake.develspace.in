@@ -1,2 +1,0 @@
-set(styx_msgs_MESSAGE_FILES "/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLight.msg;/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/TrafficLightArray.msg;/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Waypoint.msg;/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/src/styx_msgs/msg/Lane.msg")
-set(styx_msgs_SERVICE_FILES "")

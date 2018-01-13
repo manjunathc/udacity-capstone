@@ -1,8 +1,0 @@
-prefix=/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install
-
-Name: waypoint_loader
-Description: Description of waypoint_loader
-Version: 0.0.0
-Cflags: 
-Libs: -L/media/sf_project3/Real-Self-Driving-Car/CarND-Capstone/ros/install/lib 
-Requires: 

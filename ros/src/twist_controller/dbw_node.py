@@ -55,9 +55,9 @@ class DBWNode(object):
                                             ThrottleCmd, queue_size=1)
         self.brake_pub = rospy.Publisher('/vehicle/brake_cmd',
                                          BrakeCmd, queue_size=1)
-	self.dbw_enable_sub = rospy.Subscribe('/vehicle/dbw_enabled', Boolean,  dbw_enabled_callback)
-	self.current_velocity_sub = rospy.Subscribe('/current_velocity', TwistStamped, current_velocity_callback)
-	self.twist_cmd_sub = rospy.Subscribe('/twist_cmd', TwistStamped, twist_cmd_callback)
+	self.dbw_enable_sub = rospy.Subscriber('/vehicle/dbw_enabled', Bool,  self.dbw_enabled_callback)
+	self.current_velocity_sub = rospy.Subscriber('/current_velocity', TwistStamped, self.current_velocity_callback)
+	self.twist_cmd_sub = rospy.Subscriber('/twist_cmd', TwistStamped, self.twist_cmd_callback)
         # TODO: Create `TwistController` object
 
         self.controller = Controller(wheel_base,steer_ratio,0,max_lat_accel,max_steer_angle)
@@ -99,13 +99,13 @@ class DBWNode(object):
         bcmd.pedal_cmd_type = BrakeCmd.CMD_TORQUE
         bcmd.pedal_cmd = brake
         self.brake_pub.publish(bcmd)
-    def dbw_enable_callback(data):
+    def dbw_enabled_callback(self, data):
 	self.dbw_enabled = data
 
-    def current_velocity_callback(data):
+    def current_velocity_callback(self, data):
         self.current_velocity = data.twist.linear.x
 
-    def twist_cmd_callback(data):
+    def twist_cmd_callback(self, data):
         self.linear_velocity = data.twist.linear.x
         self.angular_velocity = data.twist.angular.z
 

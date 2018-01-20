@@ -59,6 +59,7 @@ class DBWNode(object):
 	self.current_velocity_sub = rospy.Subscribe('/current_velocity', TwistStamped, current_velocity_callback)
 	self.twist_cmd_sub = rospy.Subscribe('/twist_cmd', TwistStamped, twist_cmd_callback)
         # TODO: Create `TwistController` object
+
         self.controller = Controller(wheel_base,steer_ratio,0,max_lat_accel,max_steer_angle)
 
         # TODO: Subscribe to all the topics you need to

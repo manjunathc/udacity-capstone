@@ -15,4 +15,4 @@ class Controller(object):
     def control(self, *args, **kwargs):
         steer = self.yawctrl.get_steering(args[0], args[1], args[2])
         # Return throttle, brake, steer
-        return 0.2, 0., steer.
+        return 0.2, 0., steer

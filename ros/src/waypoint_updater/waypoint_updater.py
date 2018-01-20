@@ -33,12 +33,12 @@ def get_closest_waypoint(x, y, yaw, waypoints):
 
 	# search for the shortest distance between waypoint and current position
 	for i in range(len(waypoints)):
-		x_wp = waypoints[i].pose.pose.position.x
-		y_wp = waypoints[i].pose.pose.position.y
+		x_wp = waypoints[i-1].pose.pose.position.x
+		y_wp = waypoints[i-1].pose.pose.position.y
 		distance = ((x - x_wp)**2 + (y - y_wp)**2)**0.5
 		if (distance < closest_dist):
 			closest_dist = distance
-			closest_pnt = i
+			closest_pnt = i-1
 			print(closest_pnt)
 	
 	# evaluation if waypoint is ahead or slightly behind the car
@@ -99,13 +99,15 @@ class WaypointUpdater(object):
 			if (n_waypoints > LOOKAHEAD_WPS):
 				n_waypoints = LOOKAHEAD_WPS
 			for i in range(n_waypoints):
-				if (self.closest_waypoint + i < len(self.waypoints)):
-					ahead.append(self.waypoints[self.closest_waypoint+i])
-					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i, REFERENCE_VELOCITY)
+				if (self.closest_waypoint + (i-1) < len(self.waypoints)):
+					ahead.append(self.waypoints[self.closest_waypoint+(i-1)])
+					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + (i-1), REFERENCE_VELOCITY)
 				else:
 					ahead.append(self.waypoints[self.closest_waypoint+i-len(self.waypoints)])
-					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i -len(self.waypoints), REFERENCE_VELOCITY)
+					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + (i-1) -len(self.waypoints), REFERENCE_VELOCITY)
 			lane = Lane()
+			lane.header.frame_id = '/world'
+			lane.header.header.stamp = rospy.Time(0)
 			lane.waypoints = ahead
 			# publish the final waypoints
 			self.final_waypoints_pub.publish(lane)

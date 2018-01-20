@@ -17,10 +17,13 @@ class Controller(object):
         pass
 
     def control(self, *args, **kwargs):
-	rospy.loginfo('%s %s %s', args[0], args[1], args[2])
+	accel = 0
+	brake = 0
         steer = self.YawCtrl.get_steering(args[0], args[1], args[2])
-	accel = self.PIDThrottle.step(args[0]-args[2], time.time()*1000-self.stopWatch)
-	brake = self.PIDBrake.step(args[0]-args[2], time.time()*1000-self.stopWatch)
+	if args[0] > args[2]:
+		accel = self.PIDThrottle.step(args[0]-args[2], time.time()*1000-self.stopWatch)
+	if args[0] < args[2]:
+		brake = self.PIDBrake.step(args[2]-args[0], time.time()*1000-self.stopWatch)
 	self.stopWatch = time.time()*1000
         # Return throttle, brake, steer
         return accel%1, brake%1, steer

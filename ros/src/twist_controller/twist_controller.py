@@ -1,3 +1,4 @@
+import rospy
 from yaw_controller import YawController
 GAS_DENSITY = 2.858
 ONE_MPH = 0.44704
@@ -15,6 +16,7 @@ class Controller(object):
         pass
 
     def control(self, *args, **kwargs):
+	rospy.loginfo('%s %s %s', args[0], args[1], args[2])
         steer = self.YawCtrl.get_steering(args[0], args[1], args[2])
         # Return throttle, brake, steer
         return 0.2, 0., steer

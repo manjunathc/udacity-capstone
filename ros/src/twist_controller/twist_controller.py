@@ -19,4 +19,4 @@ class Controller(object):
 	rospy.loginfo('%s %s %s', args[0], args[1], args[2])
         steer = self.YawCtrl.get_steering(args[0], args[1], args[2])
         # Return throttle, brake, steer
-        return 0.2, 0., steer
+        return 0.05, 0., steer

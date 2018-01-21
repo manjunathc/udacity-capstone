@@ -23,16 +23,22 @@ as well as to verify your TL classifier.
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
-LOOKAHEAD_WPS = 20 # Number of waypoints we will publish. You can change this number
+LOOKAHEAD_WPS = 30 # Number of waypoints we will publish. You can change this number
 REFERENCE_VELOCITY = 11.0  	# 11.0 m/s = ~25mph
 
-def get_closest_waypoint(x, y, yaw, waypoints):
+def get_closest_waypoint(previousClosest, x, y, yaw, waypoints):
 	
 	closest_pnt = -1
-	closest_dist = 9999999999.9
+	closest_dist = 9999999.9
 
 	# search for the shortest distance between waypoint and current position
-	for i in range(len(waypoints)):
+	# We are assuming the vehicle progresses forward in the way points. Traversing over 10k way point is too heavy an operation.
+	assumedClosest = 0
+	assumedRange = len(waypoints)
+	if(previousClosest != -1):
+		assumedClosest = previousClosest
+		assumedRange = assumedClosest + LOOKAHEAD_WPS
+	for i in range(assumedClosest, assumedRange):
 		x_wp = waypoints[i].pose.pose.position.x
 		y_wp = waypoints[i].pose.pose.position.y
 		distance = ((x - x_wp)**2 + (y - y_wp)**2)**0.5
@@ -46,7 +52,7 @@ def get_closest_waypoint(x, y, yaw, waypoints):
 	y_closest = waypoints[closest_pnt].pose.pose.position.y
 
 	# determine angle between position and closest waypoint 
-	angle = np.arctan2((y_closest-y),(x_closest-y)) 
+	angle = np.arctan2((y_closest-y),(x_closest-x)) 
 
 	# if behind the car, take the next point instead
 	if (np.abs(yaw-angle) > np.pi/4): 		
@@ -93,13 +99,15 @@ class WaypointUpdater(object):
 	r = rospy.Rate(self.sampling_rate)       
         while not rospy.is_shutdown():
 		if self.pose_updated and self.way_point_set:
-			self.closest_waypoint = get_closest_waypoint(self.pose_x, self.pose_y, self.yaw, self.waypoints)
+			self.closest_waypoint = get_closest_waypoint(self.closest_waypoint ,self.pose_x, self.pose_y, self.yaw, self.waypoints)
+		#Not sure if we need to wait for sampling to get the closest waypoint
+		#Seems a bit late
 		if (self.closest_waypoint != -1):
 			ahead = []
 			n_waypoints = len(self.waypoints)
 			if (n_waypoints > LOOKAHEAD_WPS):
-				n_waypoints = LOOKAHEAD_WPS
-			ahead = self.waypoints[self.closest_waypoint:self.closest_waypoint+n_waypoints]
+				n_waypoints = self.closest_waypoint + LOOKAHEAD_WPS
+			ahead = self.waypoints[self.closest_waypoint:n_waypoints]
 			#for i in range(n_waypoints):
 			#	if (self.closest_waypoint + i < len(self.waypoints)):
 			#		ahead.append(self.waypoints[self.closest_waypoint+i])

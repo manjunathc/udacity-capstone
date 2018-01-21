@@ -34,10 +34,12 @@ def get_closest_waypoint(previousClosest, x, y, yaw, waypoints):
 	# search for the shortest distance between waypoint and current position
 	# We are assuming the vehicle progresses forward in the way points. Traversing over 10k way point is too heavy an operation.
 	assumedClosest = 0
-	assumedRange = len(waypoints)
+	assumedRange = len(waypoints)-1
 	if(previousClosest != -1):
 		assumedClosest = previousClosest
 		assumedRange = assumedClosest + LOOKAHEAD_WPS
+	if assumedRange >= len(waypoints):
+		assumedRange = len(waypoints)-1
 	for i in range(assumedClosest, assumedRange):
 		x_wp = waypoints[i].pose.pose.position.x
 		y_wp = waypoints[i].pose.pose.position.y

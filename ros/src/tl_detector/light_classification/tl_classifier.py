@@ -62,7 +62,7 @@ class TLClassifier(object):
         # What model to download.
         self.MODEL_NAME = 'trafic_light'
         # Path to frozen detection graph. This is the actual model that is used for the object detection.
-        self.PATH_TO_CKPT = "/home/student/carnd_capstone/udacity-capstone/ros/src/tl_detector/light_classification/"+self.MODEL_NAME + '/frozen_inference_graph.pb'
+        self.PATH_TO_CKPT = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.MODEL_NAME , 'frozen_inference_graph.pb')
         # List of the strings that is used to add correct label for each box.
         self.PATH_TO_LABELS = os.path.join('data', 'object-detection.pbtxt')
         self.NUM_CLASSES = 3

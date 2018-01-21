@@ -10,6 +10,8 @@ from light_classification.tl_classifier import TLClassifier
 import tf
 import cv2
 import yaml
+import math
+import sys
 
 STATE_COUNT_THRESHOLD = 3
 
@@ -150,6 +152,7 @@ class TLDetector(object):
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
 
         """
+        print("process_traffic_lights")
         min_dist = 80;
         closest_light_idx = -1
         state = TrafficLight.UNKNOWN   # Default state
@@ -165,7 +168,7 @@ class TLDetector(object):
         # Find closest stopping position to current pose
         closest_light_dist = sys.maxint
         
-        for i in range(len(self.stop_line_positions)):
+        for i in range(len(stop_line_positions)):
             p1 = stop_line_positions[i].position
             p2 = car_position.pose.position
             dist = self.euclidean_distance(p1.x, p1.y, p2.x, p2.y)

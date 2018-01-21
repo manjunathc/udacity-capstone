@@ -23,30 +23,36 @@ as well as to verify your TL classifier.
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
-LOOKAHEAD_WPS = 100 # Number of waypoints we will publish. You can change this number
+LOOKAHEAD_WPS = 30 # Number of waypoints we will publish. You can change this number
 REFERENCE_VELOCITY = 11.0  	# 11.0 m/s = ~25mph
 
-def get_closest_waypoint(x, y, yaw, waypoints):
+def get_closest_waypoint(previousClosest, x, y, yaw, waypoints):
 	
 	closest_pnt = -1
-	closest_dist = 99999.9
+	closest_dist = 9999999.9
 
 	# search for the shortest distance between waypoint and current position
-	for i in range(len(waypoints)):
+	# We are assuming the vehicle progresses forward in the way points. Traversing over 10k way point is too heavy an operation.
+	assumedClosest = 0
+	assumedRange = len(waypoints)
+	if(previousClosest != -1):
+		assumedClosest = previousClosest
+		assumedRange = assumedClosest + LOOKAHEAD_WPS
+	for i in range(assumedClosest, assumedRange):
 		x_wp = waypoints[i].pose.pose.position.x
 		y_wp = waypoints[i].pose.pose.position.y
 		distance = ((x - x_wp)**2 + (y - y_wp)**2)**0.5
 		if (distance < closest_dist):
 			closest_dist = distance
 			closest_pnt = i
-			print(closest_pnt)
+			
 	
 	# evaluation if waypoint is ahead or slightly behind the car
 	x_closest = waypoints[closest_pnt].pose.pose.position.x
 	y_closest = waypoints[closest_pnt].pose.pose.position.y
 
 	# determine angle between position and closest waypoint 
-	angle = np.arctan2((y_closest-y),(x_closest-y)) 
+	angle = np.arctan2((y_closest-y),(x_closest-x)) 
 
 	# if behind the car, take the next point instead
 	if (np.abs(yaw-angle) > np.pi/4): 		
@@ -61,6 +67,7 @@ def get_closest_waypoint(x, y, yaw, waypoints):
 class WaypointUpdater(object):
     def __init__(self):
 	self.pose_updated = False	# did we receive an update of the current state yet
+	self.way_point_set = False	# did we even have waypoints yet
 	self.pose_x = -1.0		# current x position 	
 	self.pose_y = -1.0		# current y position
 	self.pose_z = -1.0		# current z position
@@ -91,21 +98,26 @@ class WaypointUpdater(object):
     def loop(self): 	# loop, that repeats with a rate of 'self.sammpling_ate'
 	r = rospy.Rate(self.sampling_rate)       
         while not rospy.is_shutdown():
-		if self.pose_updated:
-			self.closest_waypoint = get_closest_waypoint(self.pose_x, self.pose_y, self.yaw, self.waypoints)
+		if self.pose_updated and self.way_point_set:
+			self.closest_waypoint = get_closest_waypoint(self.closest_waypoint ,self.pose_x, self.pose_y, self.yaw, self.waypoints)
+		#Not sure if we need to wait for sampling to get the closest waypoint
+		#Seems a bit late
 		if (self.closest_waypoint != -1):
 			ahead = []
 			n_waypoints = len(self.waypoints)
 			if (n_waypoints > LOOKAHEAD_WPS):
-				n_waypoints = LOOKAHEAD_WPS
-			for i in range(n_waypoints):
-				if (self.closest_waypoint + i < len(self.waypoints)):
-					ahead.append(self.waypoints[self.closest_waypoint+i])
-					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i, REFERENCE_VELOCITY)
-				else:
-					ahead.append(self.waypoints[self.closest_waypoint+i-len(self.waypoints)])
-					self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i -len(self.waypoints), REFERENCE_VELOCITY)
+				n_waypoints = self.closest_waypoint + LOOKAHEAD_WPS
+			ahead = self.waypoints[self.closest_waypoint:n_waypoints]
+			#for i in range(n_waypoints):
+			#	if (self.closest_waypoint + i < len(self.waypoints)):
+			#		ahead.append(self.waypoints[self.closest_waypoint+i])
+			#		self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i, REFERENCE_VELOCITY)
+			#	else:
+			#		ahead.append(self.waypoints[self.closest_waypoint+i-len(self.waypoints)])
+			#		self.set_waypoint_velocity(self.waypoints, self.closest_waypoint + i -len(self.waypoints), REFERENCE_VELOCITY)
 			lane = Lane()
+			lane.header.frame_id = '/world'
+			lane.header.stamp = rospy.Time(0)
 			lane.waypoints = ahead
 			# publish the final waypoints
 			self.final_waypoints_pub.publish(lane)
@@ -164,9 +176,11 @@ class WaypointUpdater(object):
 	'''
 	# Saving the waypoints
         self.waypoints = waypoints.waypoints
-
+	self.way_point_set = True
 	# Unsubscribe after waypoints are safed
 	self.base_waypoints_sub.unregister()
+	for wp in self.waypoints:
+                wp.twist.twist.linear.x = 11
 
     def current_velocity_cb(self, velocity):
 	self.current_velocity = velocity.twist.linear.x

@@ -97,7 +97,7 @@ class TLDetector(object):
         return math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
 
 
-    def get_closest_waypoint(self, pose):
+    def get_closest_waypoint(self, pose_x, pose_y):
         """Identifies the closest path waypoint to the given position
             https://en.wikipedia.org/wiki/Closest_pair_of_points_problem
         Args:
@@ -108,12 +108,10 @@ class TLDetector(object):
 
         """
         ret_val = -1;
-        if (self.waypoints is None or pose is None):
+        if (self.waypoints is None or pose_x is None or pose_y is None):
             return ret_val
 
         min_dist = 1e9
-        pose_x = pose.position.x
-        pose_y = pose.position.y
         for idx, wp in enumerate(self.waypoints.waypoints):
             wp_x = wp.pose.pose.position.x
             wp_y = wp.pose.pose.position.y
@@ -152,7 +150,6 @@ class TLDetector(object):
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
 
         """
-        print("process_traffic_lights")
         min_dist = 80;
         closest_light_idx = -1
         state = TrafficLight.UNKNOWN   # Default state
@@ -162,26 +159,27 @@ class TLDetector(object):
             return closest_light_idx, state
         
         if(self.pose):
-            car_position = self.get_closest_waypoint(self.pose.pose)
+            car_wp_idx = self.get_closest_waypoint(self.pose.pose.position.x, self.pose.pose.position.y)
 
-
+        
         # Find closest stopping position to current pose
         closest_light_dist = sys.maxint
         
         for i in range(len(stop_line_positions)):
-            p1 = stop_line_positions[i].position
-            p2 = car_position.pose.position
-            dist = self.euclidean_distance(p1.x, p1.y, p2.x, p2.y)
+            p1 = stop_line_positions[i]
+            p2 = self.pose.pose.position
+            dist = self.get_euclidean_distance(p1[0], p1[1], p2.x, p2.y)
             if dist < closest_light_dist:
                 closest_light_dist = dist
                 closest_light_idx = i
 
-        rospy.loginfo('Closest Light Index: {},  at Distance={}'.format(closest_light_idx, closest_light_dist))
+        # rospy.loginfo('Closest Light Index: {},  at Distance={}'.format(closest_light_idx, closest_light_dist))
 
         if (closest_light_dist >= min_dist):
             return -1, state
         else:
-            closest_light_waypoint_idx = self.get_closest_waypoint(stop_line_positions[closest_light_idx])
+            closest_light_waypoint_idx = self.get_closest_waypoint(stop_line_positions[closest_light_idx][0], stop_line_positions[closest_light_idx][1])
+            print (closest_light_waypoint_idx)
             state = self.get_light_state(stop_line_positions[closest_light_idx])
             rospy.loginfo('Light state={}, light waypoint={}'.format(state, closest_light_waypoint_idx))
 

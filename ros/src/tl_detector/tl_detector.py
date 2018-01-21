@@ -101,7 +101,23 @@ class TLDetector(object):
 
         """
         #TODO implement
-        return 0
+        ret_val = -1;
+        if (self.waypoints is None or pose is None):
+            return ret_val
+
+        min_dist = 1e9
+        pose_x = pose.position.x
+        pose_y = pose.position.y
+        for idx, wp in enumerate(self.waypoints.waypoints):
+            wp_x = wp.pose.pose.position.x
+            wp_y = wp.pose.pose.position.y
+            # z ??
+
+            dist = math.sqrt(math.pow(wp_x - pose_x, 2) + math.pow(wp_y - pose_y, 2))
+            if (dist < min_dist):
+                min_dist = dist
+                ret_val = idx
+        return ret_val
 
     def get_light_state(self, light):
         """Determines the current color of the traffic light

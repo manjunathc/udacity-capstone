@@ -3,7 +3,7 @@
 import numpy as np
 import rospy
 from geometry_msgs.msg import PoseStamped, TwistStamped
-from styx_msgs.msg import Lane, Waypoint
+from styx_msgs.msg import Lane, Waypoint, TrafficLightArray, TrafficLight
 import tf
 
 import math
@@ -42,7 +42,7 @@ def get_closest_traffic_Light(x, y, yaw, lights):
         x_closest = lights[closest_pnt].pose.pose.position.x
         y_closest = lights[closest_pnt].pose.pose.position.y
 	
-	 angle = np.arctan2((y_closest-y),(x_closest-x)) 
+	angle = np.arctan2((y_closest-y),(x_closest-x)) 
 
         # if behind the car, take the next point instead
         if (np.abs(yaw-angle) > np.pi/4):

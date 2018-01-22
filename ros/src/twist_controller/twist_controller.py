@@ -21,5 +21,6 @@ class Controller(object):
         steer = self.YawCtrl.get_steering(args[0], args[1], args[2])
 	accel = PIDThrottle.step(args[0]-args[2], time.time()*1000-self.stopWatch)
 	brake = PIDBrake.step(args[0]-args[2], time.time()*1000-self.stopWatch)
+	self.stopWatch = time.time()*1000
         # Return throttle, brake, steer
         return accel, brake, steer

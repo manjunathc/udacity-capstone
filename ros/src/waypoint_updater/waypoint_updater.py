@@ -2,6 +2,7 @@
 
 import numpy as np
 import rospy
+from std_msgs.msg import Int32
 from geometry_msgs.msg import PoseStamped, TwistStamped
 from styx_msgs.msg import Lane, Waypoint, TrafficLightArray, TrafficLight
 import tf
@@ -108,13 +109,13 @@ class WaypointUpdater(object):
 	self.distance_toRedlight = -1
 	self.waypoints = []
 	self.closest_waypoint = -1
-	
+	self.stopping = False
         rospy.init_node('waypoint_updater')
 
         self.current_pose_sub = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         self.base_waypoints_sub = rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 	self.current_velocity_sub = rospy.Subscriber('/current_velocity', TwistStamped, self.current_velocity_cb)
-	self.traffic_light_sub = rospy.Subscriber('/traffic_waypoint', TrafficLightArray, self.traffic_cb)
+	self.traffic_light_sub = rospy.Subscriber('/traffic_waypoint', Int32, self.traffic_cb)
         # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
 
         self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
@@ -218,25 +219,28 @@ class WaypointUpdater(object):
     def traffic_cb(self, msg):
 	closestlight = -1
 	distance = -1
-	if self.pose_updated and self.way_point_set:
-		closestlight = get_closest_traffic_Light(self.pose_x, self.pose_y, self.yaw, msg.lights)
+	if not self.pose_updated or not self.way_point_set:
+		return;
 	#closest light is a stopping signal
-	closest_waypoint_to_light = get_closest_waypoint(self.closest_waypoint, msg.lights[closestlight].pose.pose.x, msg.lights[closestlight].pose.pose.x, msg.lights[closestlight].pose.pose.y, self.yaw, self.waypoints)			
-	self.distance_toRedlight = distance(self, self.waypoints, self.closest_waypoint, closest_waypoiny_to_light)
+
+	distance = self.distance( self.waypoints, self.closest_waypoint, msg.data)
         # TODO: Callback for /traffic_waypoint message. Implement
 	# we will give 4 seconds for the car to stop
 	maxVelocity = -1 
-	if msg.lights[closestlight].state < 2:
-		maxVelocity = self.get_waypoint_velocity(self.closest_waypoint)
+	if not self.stopping:
+		maxVelocity = self.get_waypoint_velicity(self.closest_waypoint)
 	else:
-		maxVelocity = self.get_waypoint_velocity(cloest_waypoint_to_light+1)
-	
-	velocityChange = maxVelocity/(closest_waypoint_to_light-self.closest_waypoint)
-	if msg.lights[closestlight].state < 2:
-	        if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint]:
+		maxVelocity = self.get_waypoint_velocity(msg.data+1)
+
+	velocityChange = maxVelocity/(msg.data-self.closest_waypoint)
+
+	if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint]:
+		if not self.stopping:
+			self.stopping = True
 			for i in range(self.closest_waypoint, closest_waypoint_to_light):
 				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity - VelocityChange*(i+1))
 	else:
+		self.stopping = False
 		for i in range(self.closest_waypoint, closest_waypoint_to_light):
 			if self.get_waypoint_velocity(self.closest_waypoint)+ (i+1)*velocityChange > maxVelocity:
 				return

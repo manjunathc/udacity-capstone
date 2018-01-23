@@ -26,4 +26,4 @@ class Controller(object):
 		brake = self.PIDBrake.step(args[0]-args[2], time.time()*1000-self.stopWatch)
 	self.stopWatch = time.time()*1000
         # Return throttle, brake, steer
-        return accel%1, brake%1, steer
+        return accel%1, brake%5.0, steer

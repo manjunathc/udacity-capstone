@@ -3,7 +3,7 @@
 import numpy as np
 import rospy
 from geometry_msgs.msg import PoseStamped, TwistStamped
-from styx_msgs.msg import Lane, Waypoint
+from styx_msgs.msg import Lane, Waypoint, TrafficLightArray, TrafficLight
 import tf
 
 import math
@@ -25,7 +25,35 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 
 LOOKAHEAD_WPS = 30 # Number of waypoints we will publish. You can change this number
 REFERENCE_VELOCITY = 11.0  	# 11.0 m/s = ~25mph
+def get_closest_traffic_Light(x, y, yaw, lights):
+	#There isn't many traffic lights so we will run through all of them
+	closest_traffic = 0
+	closest_dist = 9999999999999999
+	for i in range(len(lights)):
+		x_wp = lights[i].pose.pose.position.x
+		y_wp = lights[i].pose.pose.position.y
+		distance = ((x - x_wp)**2 + (y - y_wp)**2)**0.5
+		if (distance < closest_dist):
+			closest_dist = distance
+			closest_traffic = i
 
+
+        # evaluation if waypoint is ahead or slightly behind the car
+        x_closest = lights[closest_pnt].pose.pose.position.x
+        y_closest = lights[closest_pnt].pose.pose.position.y
+	
+	angle = np.arctan2((y_closest-y),(x_closest-x)) 
+
+        # if behind the car, take the next point instead
+        if (np.abs(yaw-angle) > np.pi/4):
+                closest_traffic += 1
+                # if new lap starts
+                if (closest_traffic >= len(waypoints)):
+                        closest_traffic = 0
+
+        return closest_traffic
+
+	
 def get_closest_waypoint(previousClosest, x, y, yaw, waypoints):
 	
 	closest_pnt = -1
@@ -77,7 +105,7 @@ class WaypointUpdater(object):
 	self.pitch = 0.0		# current pitch
 	self.yaw = 0.0			# current heading direction (yaw)
 	self.current_velocity = 0.0	# current velocity of the car
-
+	self.distance_toRedlight = -1
 	self.waypoints = []
 	self.closest_waypoint = -1
 	
@@ -86,7 +114,7 @@ class WaypointUpdater(object):
         self.current_pose_sub = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         self.base_waypoints_sub = rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 	self.current_velocity_sub = rospy.Subscriber('/current_velocity', TwistStamped, self.current_velocity_cb)
-
+	self.traffic_light_sub = rospy.Subscriber('/traffic_waypoint', TrafficLightArray, self.traffic_cb)
         # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
 
         self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
@@ -181,15 +209,39 @@ class WaypointUpdater(object):
 	self.way_point_set = True
 	# Unsubscribe after waypoints are safed
 	self.base_waypoints_sub.unregister()
-	for wp in self.waypoints:
-                wp.twist.twist.linear.x = 11
+	#for wp in self.waypoints:
+        #        wp.twist.twist.linear.x = 11
 
     def current_velocity_cb(self, velocity):
 	self.current_velocity = velocity.twist.linear.x
 
     def traffic_cb(self, msg):
+	closestlight = -1
+	distance = -1
+	if self.pose_updated and self.way_point_set:
+		closestlight = get_closest_traffic_Light(self.pose_x, self.pose_y, self.yaw, msg.lights)
+	#closest light is a stopping signal
+	closest_waypoint_to_light = get_closest_waypoint(self.closest_waypoint, msg.lights[closestlight].pose.pose.x, msg.lights[closestlight].pose.pose.x, msg.lights[closestlight].pose.pose.y, self.yaw, self.waypoints)			
+	self.distance_toRedlight = distance(self, self.waypoints, self.closest_waypoint, closest_waypoiny_to_light)
         # TODO: Callback for /traffic_waypoint message. Implement
-        pass
+	# we will give 4 seconds for the car to stop
+	maxVelocity = -1 
+	if msg.lights[closestlight].state < 2:
+		maxVelocity = self.get_waypoint_velocity(self.closest_waypoint)
+	else:
+		maxVelocity = self.get_waypoint_velocity(cloest_waypoint_to_light+1)
+	
+	velocityChange = maxVelocity/(closest_waypoint_to_light-self.closest_waypoint)
+	if msg.lights[closestlight].state < 2:
+	        if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint]:
+			for i in range(self.closest_waypoint, closest_waypoint_to_light):
+				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity - VelocityChange*(i+1))
+	else:
+		for i in range(self.closest_waypoint, closest_waypoint_to_light):
+			if self.get_waypoint_velocity(self.closest_waypoint)+ (i+1)*velocityChange > maxVelocity:
+				return
+			else:
+				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity + VelocityChange*(i+1))
 
     def obstacle_cb(self, msg):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later

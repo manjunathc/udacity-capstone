@@ -228,7 +228,7 @@ class WaypointUpdater(object):
 	# we will give 4 seconds for the car to stop
 	maxVelocity = -1 
 	if not self.stopping:
-		maxVelocity = self.get_waypoint_velicity(self.closest_waypoint)
+		maxVelocity = self.get_waypoint_velocity(self.closest_waypoint)
 	else:
 		maxVelocity = self.get_waypoint_velocity(msg.data+1)
 
@@ -241,7 +241,7 @@ class WaypointUpdater(object):
 				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity(i) - VelocityChange*(i+1))
 	else:
 		self.stopping = False
-		for i in range(self.closest_waypoint, closest_waypoint_to_light):
+		for i in range(self.closest_waypoint, msg.data):
 			if self.get_waypoint_velocity(self.closest_waypoint)+ (i+1)*velocityChange > maxVelocity:
 				return
 			else:

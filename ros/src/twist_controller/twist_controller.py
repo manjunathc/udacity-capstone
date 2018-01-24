@@ -13,7 +13,7 @@ class Controller(object):
 	self.stopWatch = time.time()*1000
 	#self.Lowpass = LowPassFilter(0.3,1)
         accel_limit = args[5]
-        decel_limit = args[6] / BRAKE_MULTIPLIER
+        decel_limit = args[6]
 	self.PIDThrottle = PID(0.8,0,0.0,mn=decel_limit,mx=accel_limit)
 	self.YawCtrl = YawController(args[0], args[1], args[2], args[3], args[4])
 

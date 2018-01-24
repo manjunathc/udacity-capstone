@@ -11,8 +11,8 @@ class Controller(object):
 	# testing initialization is not giving error
 	self.stopWatch = time.time()*1000
 	#self.Lowpass = LowPassFilter(0.3,1)
-	self.PIDThrottle = PID(2.9226855,10.3267511,0.49327083)
-	self.PIDBrake = PID(2.9226855,10.3267511,0.49327083)
+	self.PIDThrottle = PID(0.8,0,0.05)
+	self.PIDBrake = PID(0.15,0,0.001)
 	self.YawCtrl = YawController(args[0], args[1], args[2], args[3], args[4])
         pass
 

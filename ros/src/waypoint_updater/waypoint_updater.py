@@ -222,8 +222,8 @@ class WaypointUpdater(object):
 	if not self.pose_updated or not self.way_point_set:
 		return;
 	#closest light is a stopping signal
-
-	distance = self.distance( self.waypoints, self.closest_waypoint, msg.data)
+	if msg.data != -1:
+		distance = self.distance( self.waypoints, self.closest_waypoint, msg.data)
         # TODO: Callback for /traffic_waypoint message. Implement
 	# we will give 4 seconds for the car to stop
 	maxVelocity = -1 

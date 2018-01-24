@@ -28,7 +28,7 @@ class Controller(object):
             throttle = accel
             breaking = 0.
         else:
-            breaking = accel*BRAKE_MULTIPLIER
+            breaking = -accel*BRAKE_MULTIPLIER
             throttle = 0.
        
         # Return throttle, brake, steer

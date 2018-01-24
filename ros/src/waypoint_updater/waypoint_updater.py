@@ -222,30 +222,27 @@ class WaypointUpdater(object):
 	if not self.pose_updated or not self.way_point_set:
 		return;
 	#closest light is a stopping signal
-
-	distance = self.distance( self.waypoints, self.closest_waypoint, msg.data)
+	if msg.data != -1:
+		distance = self.distance( self.waypoints, self.closest_waypoint, msg.data)
         # TODO: Callback for /traffic_waypoint message. Implement
 	# we will give 4 seconds for the car to stop
 	maxVelocity = -1 
 	if not self.stopping:
-		maxVelocity = self.get_waypoint_velicity(self.closest_waypoint)
+		maxVelocity = self.get_waypoint_velocity(self.closest_waypoint)
 	else:
 		maxVelocity = self.get_waypoint_velocity(msg.data+1)
 
-	velocityChange = maxVelocity/(msg.data-self.closest_waypoint)
 
-	if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint]:
+	if distance != -1 and distance < 5*self.get_waypoint_velocity(self.closest_waypoint):
 		if not self.stopping:
 			self.stopping = True
 			for i in range(self.closest_waypoint, msg.data):
-				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity(i) - VelocityChange*(i+1))
+				self.set_waypoint_velocity(self.waypoints, i, 0)
 	else:
-		self.stopping = False
-		for i in range(self.closest_waypoint, closest_waypoint_to_light):
-			if self.get_waypoint_velocity(self.closest_waypoint)+ (i+1)*velocityChange > maxVelocity:
-				return
-			else:
-				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity(i) + VelocityChange*(i+1))
+		if self.stopping:
+			self.stopping = False
+			for i in range(self.closest_waypoint, msg.data):
+				self.set_waypoint_velocity(self.waypoints, i, maxVelocity)
 
     def obstacle_cb(self, msg):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later

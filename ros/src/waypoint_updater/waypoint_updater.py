@@ -234,7 +234,7 @@ class WaypointUpdater(object):
 
 	velocityChange = maxVelocity/(msg.data-self.closest_waypoint)
 
-	if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint]:
+	if distance != -1 and distance < 4*self.get_waypoint_velocity(self.closest_waypoint):
 		if not self.stopping:
 			self.stopping = True
 			for i in range(self.closest_waypoint, msg.data):

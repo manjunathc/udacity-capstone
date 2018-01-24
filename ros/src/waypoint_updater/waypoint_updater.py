@@ -240,12 +240,13 @@ class WaypointUpdater(object):
 			for i in range(self.closest_waypoint, msg.data):
 				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity(i) - VelocityChange*(i+1))
 	else:
-		self.stopping = False
-		for i in range(self.closest_waypoint, msg.data):
-			if self.get_waypoint_velocity(self.closest_waypoint)+ (i+1)*velocityChange > maxVelocity:
-				return
-			else:
-				self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity(i) + VelocityChange*(i+1))
+		if self.stopping:
+			self.stopping = False
+			for i in range(self.closest_waypoint, msg.data):
+				if self.get_waypoint_velocity(self.closest_waypoint)+ (i+1)*velocityChange > maxVelocity:
+					return
+				else:
+					self.set_waypoint_velocity(self.waypoints, i, self.get_waypoint_velocity(i) + velocityChange*(i+1))
 
     def obstacle_cb(self, msg):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later

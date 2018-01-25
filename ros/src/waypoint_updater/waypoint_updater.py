@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from collections import namedtuple
 import numpy as np
 import rospy
 from std_msgs.msg import Int32
@@ -7,6 +8,10 @@ from geometry_msgs.msg import PoseStamped, TwistStamped
 from styx_msgs.msg import Lane, Waypoint, TrafficLightArray, TrafficLight
 import tf
 import math
+
+out = open('/tmp/debug.txt', 'w')
+out.write('first\n')
+out.flush()
 
 '''
 This node will publish waypoints from the car's current position to some `x` distance ahead.
@@ -104,7 +109,7 @@ class WaypointUpdater(object):
         self.distance_toRedlight = -1
         self.waypoints = []
         self.closest_waypoint = -1
-        self.stopping = False
+        self.stopping_point = None
         rospy.init_node('waypoint_updater')
 
         self.current_pose_sub = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
@@ -210,35 +215,43 @@ class WaypointUpdater(object):
         self.current_velocity = velocity.twist.linear.x
 
     def traffic_cb(self, msg):
-        closestlight = -1
-        distance = -1
         if not self.pose_updated or not self.way_point_set:
-            return;
-        #closest light is a stopping signal
-        if msg.data != -1:
-            distance = self.distance(self.waypoints, self.closest_waypoint, msg.data)
-        # TODO: Callback for /traffic_waypoint message. Implement
-        # we will give 4 seconds for the car to stop
-        maxVelocity = -1
-        if not self.stopping:
-            maxVelocity = self.get_waypoint_velocity(self.closest_waypoint)
-        else:
-            maxVelocity = self.get_waypoint_velocity(msg.data+1)
-        
+            return
 
-        if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint].pose.pose.position.x:
-            if not self.stopping:
-                self.stopping = True
-                for i in range(self.closest_waypoint, msg.data):
-                    self.set_waypoint_velocity(self.waypoints, i, 0)
+	new_stopping_point = (None if msg.data == -1
+                              else StoppingPoint(waypoint=msg.data))
+
+        if new_stopping_point == self.stopping_point:
+            return
+
+        if self.stopping_point:
+            print(msg.data, 'cur:', self.closest_waypoint, 'unstopping:', self.stopping_point.waypoint)
+            target_velocity = 5
+            self.interpolate_waypoint_velocity(
+                self.stopping_point.waypoint, target_velocity)
+
+        if new_stopping_point:
+            print(msg.data, 'cur:', self.closest_waypoint, 'stopping:', new_stopping_point.waypoint-10)
+            self.interpolate_waypoint_velocity(new_stopping_point.waypoint-10, 0)
+
+        self.stopping_point = new_stopping_point
+
+    def interpolate_waypoint_velocity(self,
+            destination_waypoint, target_velocity):
+        start_waypoint = max(0, destination_waypoint-60)
+        min_velocity = 0.5
+        if target_velocity == 0:
+            for i in range(start_waypoint, destination_waypoint):
+                velocity = ((destination_waypoint-i)*5.0 +
+                            (start_waypoint-i)*min_velocity) / (
+                            destination_waypoint - start_waypoint)
+                self.set_waypoint_velocity(self.waypoints, i, velocity)
         else:
-            if self.stopping:
-                self.stopping = False
-                up = msg.data
-                # if msg.data == -1:
-                #     up = self.closest_waypoint+20
-                for i in range(self.closest_waypoint, up):
-                    self.set_waypoint_velocity(self.waypoints, i, maxVelocity)
+            for i in range(0, len(self.waypoints)):
+                self.set_waypoint_velocity(self.waypoints, i, target_velocity)
+
+        for i in range(destination_waypoint, destination_waypoint+15):
+            self.set_waypoint_velocity(self.waypoints, i, target_velocity)
 
     def obstacle_cb(self, msg):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later
@@ -259,6 +272,7 @@ class WaypointUpdater(object):
             wp1 = i
         return dist
 
+StoppingPoint = namedtuple('StoppingPoint', ['waypoint'])
 
 if __name__ == '__main__':
     try:

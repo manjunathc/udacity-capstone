@@ -123,6 +123,7 @@ class WaypointUpdater(object):
 
     def loop(self):     # loop, that repeats with a rate of 'self.sammpling_ate'
         r = rospy.Rate(self.sampling_rate)
+        prev_velocity = 0
         while not rospy.is_shutdown():
             if self.pose_updated and self.way_point_set:
                 self.closest_waypoint = get_closest_waypoint(self.closest_waypoint ,self.pose_x, self.pose_y, self.yaw, self.waypoints)
@@ -146,6 +147,10 @@ class WaypointUpdater(object):
                     lane.header.stamp = rospy.Time(0)
                     lane.waypoints = ahead
                     # publish the final waypoints
+                    velocity = ahead[0].twist.twist.linear.x # velocity XXX
+                    if prev_velocity != velocity:
+                        prev_velocity = velocity
+                        print velocity
                     self.final_waypoints_pub.publish(lane)
             r.sleep()
 
@@ -224,12 +229,17 @@ class WaypointUpdater(object):
             self.interpolate_waypoint_velocity(
                 self.stopping_point.waypoint, target_velocity)
 
-	new_stopping_point = (
-            None if msg.data == -1 else
-            StoppingPoint(
-                waypoint=msg.data,
-                original_velocity=
-                    self.get_waypoint_velocity(msg.data)))
+        # if the car is too close to the traffic light, we know
+        # that it can't possibly see the light anymore. In which
+        # case we assume the light is green.
+        if msg.data == -1 or msg.data < self.closest_waypoint+4:
+            new_stopping_point = None
+        else:
+	    new_stopping_point = (
+                StoppingPoint(
+                    waypoint=msg.data,
+                    original_velocity=
+                        self.get_waypoint_velocity(msg.data)))
 
         if new_stopping_point:
             self.interpolate_waypoint_velocity(new_stopping_point.waypoint-10, 0)

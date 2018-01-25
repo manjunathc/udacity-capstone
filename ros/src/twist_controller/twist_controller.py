@@ -30,7 +30,7 @@ class Controller(object):
             throttle = accel
             breaking = 0.
         else:
-            breaking = -accel*(self.Mass/(4.167133072*4.167133072))
+            breaking = -accel*(self.Mass/(3.28633534*3.28633534))
             throttle = 0.
 #	if time_delta > 30000:
 #		return 0, 25, steer

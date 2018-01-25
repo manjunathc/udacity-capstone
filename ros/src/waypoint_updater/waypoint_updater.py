@@ -9,10 +9,6 @@ from styx_msgs.msg import Lane, Waypoint, TrafficLightArray, TrafficLight
 import tf
 import math
 
-out = open('/tmp/debug.txt', 'w')
-out.write('first\n')
-out.flush()
-
 '''
 This node will publish waypoints from the car's current position to some `x` distance ahead.
 
@@ -217,39 +213,52 @@ class WaypointUpdater(object):
     def traffic_cb(self, msg):
         if not self.pose_updated or not self.way_point_set:
             return
-
-	new_stopping_point = (None if msg.data == -1
-                              else StoppingPoint(waypoint=msg.data))
-
-        if new_stopping_point == self.stopping_point:
+        if not self.stopping_point and msg.data == -1:
+            return
+        if (self.stopping_point and
+                msg.data == self.stopping_point.waypoint):
             return
 
         if self.stopping_point:
-            print(msg.data, 'cur:', self.closest_waypoint, 'unstopping:', self.stopping_point.waypoint)
-            target_velocity = 5
+            target_velocity = self.stopping_point.original_velocity
             self.interpolate_waypoint_velocity(
                 self.stopping_point.waypoint, target_velocity)
 
+	new_stopping_point = (
+            None if msg.data == -1 else
+            StoppingPoint(
+                waypoint=msg.data,
+                original_velocity=
+                    self.get_waypoint_velocity(msg.data)))
+
         if new_stopping_point:
-            print(msg.data, 'cur:', self.closest_waypoint, 'stopping:', new_stopping_point.waypoint-10)
             self.interpolate_waypoint_velocity(new_stopping_point.waypoint-10, 0)
 
         self.stopping_point = new_stopping_point
+        print("Traffic light changed. Current waypoint: {}. Stopping point: {}".format(self.closest_waypoint, self.stopping_point))
 
     def interpolate_waypoint_velocity(self,
             destination_waypoint, target_velocity):
         start_waypoint = max(0, destination_waypoint-60)
         min_velocity = 0.5
-        if target_velocity == 0:
-            for i in range(start_waypoint, destination_waypoint):
-                velocity = ((destination_waypoint-i)*5.0 +
-                            (start_waypoint-i)*min_velocity) / (
-                            destination_waypoint - start_waypoint)
-                self.set_waypoint_velocity(self.waypoints, i, velocity)
-        else:
-            for i in range(0, len(self.waypoints)):
-                self.set_waypoint_velocity(self.waypoints, i, target_velocity)
+        start_velocity = max(
+            self.get_waypoint_velocity(start_waypoint),
+            min_velocity)
+        end_velocity = max(min_velocity, target_velocity)
 
+        # Ramp up/down to the correct speed
+        for i in range(start_waypoint, destination_waypoint):
+            # We need advance space for slowing down, whereas speeding
+            # up seems to work fine even without rampup period
+            if end_velocity < start_velocity:
+                velocity = (((destination_waypoint-i)*start_velocity +
+                             (i-start_waypoint)*end_velocity) * 1.0 /
+                            (destination_waypoint - start_waypoint))
+            else:
+                velocity = end_velocity
+            self.set_waypoint_velocity(self.waypoints, i, velocity)
+
+        # Add some buffer in case the car overshoots destination_waypoint
         for i in range(destination_waypoint, destination_waypoint+15):
             self.set_waypoint_velocity(self.waypoints, i, target_velocity)
 
@@ -272,7 +281,7 @@ class WaypointUpdater(object):
             wp1 = i
         return dist
 
-StoppingPoint = namedtuple('StoppingPoint', ['waypoint'])
+StoppingPoint = namedtuple('StoppingPoint', ['waypoint', 'original_velocity'])
 
 if __name__ == '__main__':
     try:

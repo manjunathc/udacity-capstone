@@ -4,6 +4,7 @@ from pid import PID
 import time;
 GAS_DENSITY = 2.858
 ONE_MPH = 0.44704
+BRAKE_MULTIPLIER = 5.
 
 class Controller(object):
     def __init__(self, *args, **kwargs):
@@ -11,7 +12,9 @@ class Controller(object):
 	# testing initialization is not giving error
 	self.stopWatch = time.time()*1000
 	#self.Lowpass = LowPassFilter(0.3,1)
-	self.PIDThrottle = PID(0.8,0,0.05)
+        accel_limit = args[5]
+        decel_limit = args[6] / BRAKE_MULTIPLIER
+	self.PIDThrottle = PID(0.8,0,0.05,mn=decel_limit,mx=accel_limit)
 	self.YawCtrl = YawController(args[0], args[1], args[2], args[3], args[4])
 
     def control(self, linear_velocity, angular_velocity, current_velocity):
@@ -25,7 +28,7 @@ class Controller(object):
             throttle = accel
             breaking = 0.
         else:
-            breaking = -accel
+            breaking = -accel*BRAKE_MULTIPLIER
             throttle = 0.
        
         # Return throttle, brake, steer

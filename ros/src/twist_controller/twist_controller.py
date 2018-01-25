@@ -31,3 +31,5 @@ class Controller(object):
         # Return throttle, brake, steer
         return throttle, breaking, steer
 
+    def reset(self):
+        self.PIDThrottle.reset()

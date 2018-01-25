@@ -41,7 +41,6 @@ class TLDetector(object):
         self.config = yaml.load(config_string)
 
         self.upcoming_red_light_pub = rospy.Publisher('/traffic_waypoint', Int32, queue_size=1)
-        self.TrafficLightState = rospy.Publisher('/traffic_light_state', Int32, queue_size=1)
 
         self.bridge = CvBridge()
         self.light_classifier = TLClassifier()
@@ -140,7 +139,7 @@ class TLDetector(object):
         if(not self.has_image):
             self.prev_light_loc = None
             return False
-
+	self.camera_image.encoding = 'rgb8'
         cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
 
         #Get classification

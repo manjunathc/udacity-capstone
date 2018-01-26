@@ -179,6 +179,8 @@ class TLDetector(object):
             p1 = stop_line_positions[i]
             p2 = self.pose.pose.position
             dist = self.get_euclidean_distance(p1[0], p1[1], p2.x, p2.y)
+            if dist < 0:
+                continue
             if dist < closest_light_dist:
                 closest_light_dist = dist
                 closest_light_idx = i

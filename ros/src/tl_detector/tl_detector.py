@@ -82,19 +82,24 @@ class TLDetector(object):
         used.
         '''
         if self.state != state:
+            # print ("=-=-=-=-=-=-=-=-=-= if =-=-=-=-=-=-=-=-=-=")
+            # print ("state ", state)
             self.state_count = 0
             self.state = state
         elif self.state_count >= STATE_COUNT_THRESHOLD:
             self.last_state = self.state
             # print ("=-=-=-=-=-=-=-=-=-= elif =-=-=-=-=-=-=-=-=-=")
+            # print ("state ", state)
             # print ("light_wp1 ", light_wp)
-            light_wp = light_wp if state == TrafficLight.RED or state == TrafficLight.UNKNOWN else -1
+            light_wp = light_wp if state == TrafficLight.RED else -1
             self.last_wp = light_wp
             # print ("light_wp2 ", light_wp)
-            # print ("state ", state)
             self.upcoming_red_light_pub.publish(Int32(light_wp))
         else:
             # self.upcoming_red_light_pub.publish(Int32(light_wp))
+            # print ("=-=-=-=-=-=-=-=-=-= else =-=-=-=-=-=-=-=-=-=")
+            # print ("self.last_wp ", self.last_wp)
+            # print ("state ", state)
             self.upcoming_red_light_pub.publish(Int32(self.last_wp))
         self.state_count += 1
 
@@ -174,6 +179,8 @@ class TLDetector(object):
             p1 = stop_line_positions[i]
             p2 = self.pose.pose.position
             dist = self.get_euclidean_distance(p1[0], p1[1], p2.x, p2.y)
+            if dist < 0:
+                continue
             if dist < closest_light_dist:
                 closest_light_dist = dist
                 closest_light_idx = i

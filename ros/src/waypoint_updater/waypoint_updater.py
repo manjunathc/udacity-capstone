@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from collections import namedtuple
 import numpy as np
 import rospy
 from std_msgs.msg import Int32
@@ -104,7 +105,7 @@ class WaypointUpdater(object):
         self.distance_toRedlight = -1
         self.waypoints = []
         self.closest_waypoint = -1
-        self.stopping = False
+        self.stopping_point = None
         rospy.init_node('waypoint_updater')
 
         self.current_pose_sub = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
@@ -122,6 +123,7 @@ class WaypointUpdater(object):
 
     def loop(self):     # loop, that repeats with a rate of 'self.sammpling_ate'
         r = rospy.Rate(self.sampling_rate)
+        prev_velocity = 0
         while not rospy.is_shutdown():
             if self.pose_updated and self.way_point_set:
                 self.closest_waypoint = get_closest_waypoint(self.closest_waypoint ,self.pose_x, self.pose_y, self.yaw, self.waypoints)
@@ -145,6 +147,10 @@ class WaypointUpdater(object):
                     lane.header.stamp = rospy.Time(0)
                     lane.waypoints = ahead
                     # publish the final waypoints
+                    velocity = ahead[0].twist.twist.linear.x # velocity XXX
+                    if prev_velocity != velocity:
+                        prev_velocity = velocity
+                        print velocity
                     self.final_waypoints_pub.publish(lane)
             r.sleep()
 
@@ -210,35 +216,61 @@ class WaypointUpdater(object):
         self.current_velocity = velocity.twist.linear.x
 
     def traffic_cb(self, msg):
-        closestlight = -1
-        distance = -1
         if not self.pose_updated or not self.way_point_set:
-            return;
-        #closest light is a stopping signal
-        if msg.data != -1:
-            distance = self.distance(self.waypoints, self.closest_waypoint, msg.data)
-        # TODO: Callback for /traffic_waypoint message. Implement
-        # we will give 4 seconds for the car to stop
-        maxVelocity = -1
-        if not self.stopping:
-            maxVelocity = self.get_waypoint_velocity(self.closest_waypoint)
-        else:
-            maxVelocity = self.get_waypoint_velocity(msg.data+1)
-        
+            return
+        if not self.stopping_point and msg.data == -1:
+            return
+        if (self.stopping_point and
+                msg.data == self.stopping_point.waypoint):
+            return
 
-        if distance != -1 and distance < 4*self.waypoints[self.closest_waypoint].pose.pose.position.x:
-            if not self.stopping:
-                self.stopping = True
-                for i in range(self.closest_waypoint, msg.data):
-                    self.set_waypoint_velocity(self.waypoints, i, 0)
+        if self.stopping_point:
+            target_velocity = self.stopping_point.original_velocity
+            self.interpolate_waypoint_velocity(
+                self.stopping_point.waypoint, target_velocity)
+
+        # if the car is too close to the traffic light, we know
+        # that it can't possibly see the light anymore. In which
+        # case we assume the light is green.
+        if msg.data == -1 or msg.data < self.closest_waypoint+4:
+            new_stopping_point = None
         else:
-            if self.stopping:
-                self.stopping = False
-                up = msg.data
-                # if msg.data == -1:
-                #     up = self.closest_waypoint+20
-                for i in range(self.closest_waypoint, up):
-                    self.set_waypoint_velocity(self.waypoints, i, maxVelocity)
+	    new_stopping_point = (
+                StoppingPoint(
+                    waypoint=msg.data,
+                    original_velocity=
+                        self.get_waypoint_velocity(msg.data)))
+
+        if new_stopping_point:
+            self.interpolate_waypoint_velocity(new_stopping_point.waypoint-10, 0)
+
+        self.stopping_point = new_stopping_point
+        print("Traffic light changed. Current waypoint: {}. Stopping point: {}".format(self.closest_waypoint, self.stopping_point))
+
+    def interpolate_waypoint_velocity(self,
+            destination_waypoint, target_velocity):
+        start_waypoint = max(0, destination_waypoint-60)
+        min_velocity = 0.5
+        start_velocity = max(
+            self.get_waypoint_velocity(start_waypoint),
+            min_velocity)
+        end_velocity = max(min_velocity, target_velocity)
+
+        # Ramp up/down to the correct speed
+        for i in range(start_waypoint, destination_waypoint):
+            # We need advance space for slowing down, whereas speeding
+            # up seems to work fine even without rampup period
+            if end_velocity < start_velocity:
+                velocity = (((destination_waypoint-i)*start_velocity +
+                             (i-start_waypoint)*end_velocity) * 1.0 /
+                            (destination_waypoint - start_waypoint))
+            else:
+                velocity = end_velocity
+            self.set_waypoint_velocity(self.waypoints, i, velocity)
+
+        # Add some buffer in case the car overshoots destination_waypoint
+        for i in range(destination_waypoint, destination_waypoint+15):
+            self.set_waypoint_velocity(self.waypoints, i, target_velocity)
 
     def obstacle_cb(self, msg):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later
@@ -259,6 +291,7 @@ class WaypointUpdater(object):
             wp1 = i
         return dist
 
+StoppingPoint = namedtuple('StoppingPoint', ['waypoint', 'original_velocity'])
 
 if __name__ == '__main__':
     try:

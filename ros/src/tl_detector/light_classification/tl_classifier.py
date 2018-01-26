@@ -88,21 +88,15 @@ class TLClassifier(object):
 		traffic_class = classes[0].squeeze()
 		
 		traffic_class_int = int(traffic_class[0])-1;
-		print("score-->",score[0])
-		print("traffic_class_int-->",traffic_class_int)   
-		    
 		#rospy.logwarn("score-->",str(score[0]))
 		#rospy.logwarn("traffic_class-->",str(traffic_class_int))
 		#TODO implement light color prediction
 
 	    	if (traffic_class_int == TrafficLight.RED):
-			print("TrafficLight.RED") 
 	    		return TrafficLight.RED
 	    	elif (traffic_class_int == TrafficLight.YELLOW):
-			print("TrafficLight.YELLOW") 
 	    		return TrafficLight.YELLOW
 	    	elif (traffic_class_int == TrafficLight.GREEN):
-			print("TrafficLight.GREEN") 
 	    		return TrafficLight.GREEN
 		else:
 			return TrafficLight.UNKNOWN

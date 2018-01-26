@@ -26,33 +26,6 @@ TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 
 LOOKAHEAD_WPS = 30 # Number of waypoints we will publish. You can change this number
 REFERENCE_VELOCITY = 11.0       # 11.0 m/s = ~25mph
-def get_closest_traffic_Light(x, y, yaw, lights):
-    #There isn't many traffic lights so we will run through all of them
-    closest_traffic = 0
-    closest_dist = 9999999999999999
-    for i in range(len(lights)):
-        x_wp = lights[i].pose.pose.position.x
-        y_wp = lights[i].pose.pose.position.y
-        distance = ((x - x_wp)**2 + (y - y_wp)**2)**0.5
-        if (distance < closest_dist):
-            closest_dist = distance
-            closest_traffic = i
-
-    # evaluation if waypoint is ahead or slightly behind the car
-    x_closest = lights[closest_pnt].pose.pose.position.x
-    y_closest = lights[closest_pnt].pose.pose.position.y
-
-    angle = np.arctan2((y_closest-y),(x_closest-x))
-
-    # if behind the car, take the next point instead
-    if (np.abs(yaw-angle) > np.pi/4):
-        closest_traffic += 1
-        # if new lap starts
-        if (closest_traffic >= len(waypoints)):
-            closest_traffic = 0
-
-    return closest_traffic
-
 
 def get_closest_waypoint(previousClosest, x, y, yaw, waypoints):
     closest_pnt = -1

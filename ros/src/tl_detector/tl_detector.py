@@ -24,21 +24,6 @@ class TLDetector(object):
         self.camera_image = None
         self.lights = []
 
-        config_string = rospy.get_param("/traffic_light_config")
-        self.config = yaml.load(config_string)
-
-        self.upcoming_red_light_pub = rospy.Publisher('/traffic_waypoint', Int32, queue_size=1)
-        self.TrafficLightState = rospy.Publisher('/traffic_light_state', Int32, queue_size=1)
-
-        self.bridge = CvBridge()
-        self.light_classifier = TLClassifier()
-        self.listener = tf.TransformListener()
-
-        self.state = TrafficLight.UNKNOWN
-        self.last_state = TrafficLight.UNKNOWN
-        self.last_wp = -1
-        self.state_count = 0
-
         sub1 = rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         sub2 = rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
 
@@ -51,6 +36,20 @@ class TLDetector(object):
         '''
         sub3 = rospy.Subscriber('/vehicle/traffic_lights', TrafficLightArray, self.traffic_cb)
         sub6 = rospy.Subscriber('/image_color', Image, self.image_cb)
+
+        config_string = rospy.get_param("/traffic_light_config")
+        self.config = yaml.load(config_string)
+
+        self.upcoming_red_light_pub = rospy.Publisher('/traffic_waypoint', Int32, queue_size=1)
+
+        self.bridge = CvBridge()
+        self.light_classifier = TLClassifier()
+        self.listener = tf.TransformListener()
+
+        self.state = TrafficLight.UNKNOWN
+        self.last_state = TrafficLight.UNKNOWN
+        self.last_wp = -1
+        self.state_count = 0
 
         rospy.spin()
 
@@ -82,24 +81,19 @@ class TLDetector(object):
         used.
         '''
         if self.state != state:
-            # print ("=-=-=-=-=-=-=-=-=-= if =-=-=-=-=-=-=-=-=-=")
-            # print ("state ", state)
             self.state_count = 0
             self.state = state
         elif self.state_count >= STATE_COUNT_THRESHOLD:
             self.last_state = self.state
             # print ("=-=-=-=-=-=-=-=-=-= elif =-=-=-=-=-=-=-=-=-=")
-            # print ("state ", state)
             # print ("light_wp1 ", light_wp)
-            light_wp = light_wp if state == TrafficLight.RED else -1
+            light_wp = light_wp if state == TrafficLight.RED or state == TrafficLight.UNKNOWN or state == TrafficeLight.YELLOW else -1
             self.last_wp = light_wp
             # print ("light_wp2 ", light_wp)
+            # print ("state ", state)
             self.upcoming_red_light_pub.publish(Int32(light_wp))
         else:
             # self.upcoming_red_light_pub.publish(Int32(light_wp))
-            # print ("=-=-=-=-=-=-=-=-=-= else =-=-=-=-=-=-=-=-=-=")
-            # print ("self.last_wp ", self.last_wp)
-            # print ("state ", state)
             self.upcoming_red_light_pub.publish(Int32(self.last_wp))
         self.state_count += 1
 
@@ -145,7 +139,7 @@ class TLDetector(object):
         if(not self.has_image):
             self.prev_light_loc = None
             return False
-
+	self.camera_image.encoding = 'rgb8'
         cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
 
         #Get classification
@@ -179,8 +173,6 @@ class TLDetector(object):
             p1 = stop_line_positions[i]
             p2 = self.pose.pose.position
             dist = self.get_euclidean_distance(p1[0], p1[1], p2.x, p2.y)
-            if dist < 0:
-                continue
             if dist < closest_light_dist:
                 closest_light_dist = dist
                 closest_light_idx = i

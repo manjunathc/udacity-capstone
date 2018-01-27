@@ -28,9 +28,10 @@ class Controller(object):
             throttle = accel
             breaking = 0.
         else:
-            breaking = -accel*BRAKE_MULTIPLIER
+            breaking = -accel*100
             throttle = 0.
-       
+#	if time_delta > 30000:
+#		return 0, 25, steer
         # Return throttle, brake, steer
         return throttle, breaking, steer
 

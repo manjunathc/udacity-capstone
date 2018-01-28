@@ -60,7 +60,7 @@ class DBWNode(object):
 	self.twist_cmd_sub = rospy.Subscriber('/twist_cmd', TwistStamped, self.twist_cmd_callback)
         # TODO: Create `TwistController` object
 
-        self.controller = Controller(wheel_base,steer_ratio,0,max_lat_accel,max_steer_angle,accel_limit,self.max_braking_percent)
+        self.controller = Controller(wheel_base,steer_ratio,0,max_lat_accel,max_steer_angle,accel_limit,decel_limit, vehicle_mass)
 
         # TODO: Subscribe to all the topics you need to
 
@@ -98,7 +98,7 @@ class DBWNode(object):
 
         bcmd = BrakeCmd()
         bcmd.enable = True
-        bcmd.pedal_cmd_type = BrakeCmd.CMD_PERCENT
+        bcmd.pedal_cmd_type = BrakeCmd.CMD_TORQUE
         bcmd.pedal_cmd = brake
         self.brake_pub.publish(bcmd)
     def dbw_enabled_callback(self, data):

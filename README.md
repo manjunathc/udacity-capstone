@@ -1,7 +1,7 @@
 # Udacity SDCND - Capstone Project 
 ---
 
-**Team Name - Wheels in Motion**
+*Team Name - Wheels in Motion*
 
 | Name | Email |
 | --- | --- |
@@ -10,6 +10,7 @@
 | Harsh Sharma | mail.hs.harsh@gmail.com |
 | Philipp Claus | philipp.claus19@gmail.com |
 | Samuel Hoffstaetter | samuel@hoffstaetter.com |
+
 
 
 

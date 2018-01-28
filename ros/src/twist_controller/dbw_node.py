@@ -48,7 +48,7 @@ class DBWNode(object):
         steer_ratio = rospy.get_param('~steer_ratio', 14.8)
         max_lat_accel = rospy.get_param('~max_lat_accel', 3.)
         max_steer_angle = rospy.get_param('~max_steer_angle', 8.)
-
+	self.max_braking_percent = rospy.get_param('~max_braking_percentage', -0.1)
         self.steer_pub = rospy.Publisher('/vehicle/steering_cmd',
                                          SteeringCmd, queue_size=1)
         self.throttle_pub = rospy.Publisher('/vehicle/throttle_cmd',
@@ -60,7 +60,7 @@ class DBWNode(object):
 	self.twist_cmd_sub = rospy.Subscriber('/twist_cmd', TwistStamped, self.twist_cmd_callback)
         # TODO: Create `TwistController` object
 
-        self.controller = Controller(wheel_base,steer_ratio,0,max_lat_accel,max_steer_angle,accel_limit,decel_limit)
+        self.controller = Controller(wheel_base,steer_ratio,0,max_lat_accel,max_steer_angle,accel_limit,self.max_braking_percent)
 
         # TODO: Subscribe to all the topics you need to
 
@@ -98,7 +98,7 @@ class DBWNode(object):
 
         bcmd = BrakeCmd()
         bcmd.enable = True
-        bcmd.pedal_cmd_type = BrakeCmd.CMD_TORQUE
+        bcmd.pedal_cmd_type = BrakeCmd.CMD_PERCENT
         bcmd.pedal_cmd = brake
         self.brake_pub.publish(bcmd)
     def dbw_enabled_callback(self, data):

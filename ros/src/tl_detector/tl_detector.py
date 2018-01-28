@@ -87,7 +87,7 @@ class TLDetector(object):
             self.last_state = self.state
             # print ("=-=-=-=-=-=-=-=-=-= elif =-=-=-=-=-=-=-=-=-=")
             # print ("light_wp1 ", light_wp)
-            light_wp = light_wp if state == TrafficLight.RED or state == TrafficLight.UNKNOWN or state == TrafficeLight.YELLOW else -1
+            light_wp = light_wp if state == TrafficLight.RED or state == TrafficLight.UNKNOWN or state == TrafficLight.YELLOW else -1
             self.last_wp = light_wp
             # print ("light_wp2 ", light_wp)
             # print ("state ", state)

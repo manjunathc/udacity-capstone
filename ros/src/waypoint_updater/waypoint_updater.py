@@ -243,7 +243,7 @@ class WaypointUpdater(object):
 
         # Add some buffer in case the car overshoots destination_waypoint
         for i in range(destination_waypoint, destination_waypoint+100):
-            self.set_waypoint_velocity(self.waypoints, i, target_velocity)
+            self.set_waypoint_velocity(self.waypoints, i%len(self.waypoints), target_velocity)
 
     def obstacle_cb(self, msg):
         # TODO: Callback for /obstacle_waypoint message. We will implement it later

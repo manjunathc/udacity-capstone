@@ -5,6 +5,7 @@ from std_msgs.msg import Bool
 from dbw_mkz_msgs.msg import ThrottleCmd, SteeringCmd, BrakeCmd, SteeringReport
 from geometry_msgs.msg import TwistStamped
 import math
+import time
 
 from twist_controller import Controller
 
@@ -38,6 +39,7 @@ class DBWNode(object):
         self.linear_velocity = 0
         self.angular_velocity = 0
         self.current_velocity = 0
+	self.drive_by_wire_first_input_time = 0
         vehicle_mass = rospy.get_param('~vehicle_mass', 1736.35)
         fuel_capacity = rospy.get_param('~fuel_capacity', 13.5)
         brake_deadband = rospy.get_param('~brake_deadband', .1)
@@ -77,9 +79,14 @@ class DBWNode(object):
             #                                                     <dbw status>,
             #                                                     <any other argument you need>)
             # if <dbw is enabled>:
+	    if self.drive_by_wire_first_input_time == 0:
+	    	self.drive_by_wire_first_input_time = time.time()*1000
             if self.dbw_enabled:
                 throttle, brake, steering = self.controller.control(self.linear_velocity,self.angular_velocity,self.current_velocity)
-                self.publish(throttle, brake, steering)
+                	#giving sometime for tf and warm up first
+			if time.time()*1000 - self.drive_by_wire_first_input_time < 3000:
+				throttle = 0.04
+		self.publish(throttle, brake, steering)
             else:
                 self.controller.reset()
             rate.sleep()

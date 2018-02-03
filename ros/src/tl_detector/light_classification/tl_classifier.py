@@ -82,23 +82,36 @@ class TLClassifier(object):
         #image_np = load_image_into_numpy_array(image)
         # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
         #image_np_expanded = np.expand_dims(image, axis=0)
+        
         (scores, classes) = detectImage(self,image)
-        score = scores[0].squeeze()
-	if (score[0] > self.min_score_thresh):
-		traffic_class = classes[0].squeeze()
-		
-		traffic_class_int = int(traffic_class[0])-1;
+        scores = np.squeeze(scores)
+        classes = np.squeeze(classes).astype(np.int32)
+        id_class = 1
+        max_scores = 3   
+        
+        for i in range(max(0,max_scores)):
+            if scores[i] > self.min_score_thresh:
+                print("> Thresh - classes-->",classes[i])
+                print("> Thresh - score-->",scores[i])
+		id_class = classes[i]
+                if (i > 0 and classes[i] != 1):
+                    id_class = 3
+		else:
+		    id_class = classes[i]
+
+	print("id_class after for-->",id_class)    
+        traffic_class_int = id_class - 1
 		#rospy.logwarn("score-->",str(score[0]))
 		#rospy.logwarn("traffic_class-->",str(traffic_class_int))
 		#TODO implement light color prediction
+	rospy.loginfo('Light state before return={}'.format(traffic_class_int))
 
-	    	if (traffic_class_int == TrafficLight.RED):
-	    		return TrafficLight.RED
-	    	elif (traffic_class_int == TrafficLight.YELLOW):
-	    		return TrafficLight.YELLOW
-	    	elif (traffic_class_int == TrafficLight.GREEN):
-	    		return TrafficLight.GREEN
-		else:
-			return TrafficLight.UNKNOWN
+	if (traffic_class_int == TrafficLight.RED):
+		return TrafficLight.RED
+	elif (traffic_class_int == TrafficLight.YELLOW):
+		return TrafficLight.YELLOW
+	elif (traffic_class_int == TrafficLight.GREEN):
+		return TrafficLight.GREEN
 	else:
-        	return TrafficLight.UNKNOWN
+		return TrafficLight.UNKNOWN
+	   

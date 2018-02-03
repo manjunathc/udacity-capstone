@@ -91,15 +91,15 @@ class TLClassifier(object):
         
         for i in range(max(0,max_scores)):
             if scores[i] > self.min_score_thresh:
-                print("> Thresh - classes-->",classes[i])
-                print("> Thresh - score-->",scores[i])
+                #print("> Thresh - classes-->",classes[i])
+                #print("> Thresh - score-->",scores[i])
 		id_class = classes[i]
                 if (i > 0 and classes[i] != 1):
                     id_class = 3
 		else:
 		    id_class = classes[i]
 
-	print("id_class after for-->",id_class)    
+	#print("id_class after for-->",id_class)    
         traffic_class_int = id_class - 1
 		#rospy.logwarn("score-->",str(score[0]))
 		#rospy.logwarn("traffic_class-->",str(traffic_class_int))

@@ -158,17 +158,16 @@ class TLDetector(object):
         closest_light_idx = -1
         state = TrafficLight.UNKNOWN   # Default state
         stop_line_positions = self.config['stop_line_positions']
-        
-        if (self.waypoints is None):
+
+        if self.waypoints is None or self.pose is None:
             return closest_light_idx, state
-        
-        if(self.pose):
+
+        if self.pose:
             car_wp_idx = self.get_closest_waypoint(self.pose.pose.position.x, self.pose.pose.position.y)
 
-        
         # Find closest stopping position to current pose
         closest_light_dist = sys.maxint
-        
+
         for i in range(len(stop_line_positions)):
             p1 = stop_line_positions[i]
             p2 = self.pose.pose.position

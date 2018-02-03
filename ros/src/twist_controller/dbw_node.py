@@ -84,8 +84,8 @@ class DBWNode(object):
             if self.dbw_enabled:
                 throttle, brake, steering = self.controller.control(self.linear_velocity,self.angular_velocity,self.current_velocity)
                 	#giving sometime for tf and warm up first
-			if time.time()*1000 - self.drive_by_wire_first_input_time < 3000:
-				throttle = 0.04
+		if time.time()*1000 - self.drive_by_wire_first_input_time < 3000:
+			throttle = 0.04
 		self.publish(throttle, brake, steering)
             else:
                 self.controller.reset()
